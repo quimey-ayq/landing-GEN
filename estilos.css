@@ -310,7 +310,6 @@ header.scrolled {
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-/* Nueva animación de zoom/escala para la sección nosotros */
 .scale-in {
     opacity: 0;
     transform: scale(0.85);
@@ -325,7 +324,12 @@ header.scrolled {
 .section-title h2 { font-size: 2.4rem; font-weight: 800; color: var(--color-primary); position: relative; padding-bottom: 15px; margin-bottom: 10px; text-transform: uppercase; }
 .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background-color: var(--color-secondary); }
 
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.services-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px; 
+}
 .service-card {
     background-color: var(--color-white);
     border-radius: 8px;
@@ -336,7 +340,10 @@ header.scrolled {
     display: flex;
     flex-direction: column;
     overflow: hidden; /* Para que el zoom de la imagen no se salga del borde */
+    flex: 1 1 320px; /* Toma un ancho base de 320px y se adapta */
+    max-width: 380px; /* Evita que las tarjetas se estiren demasiado en pantallas muy anchas */
 }
+
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1);
@@ -375,7 +382,7 @@ header.scrolled {
 .features-wrapper { 
     display: flex; 
     flex-wrap: wrap;
-    justify-content: center; /* Centramos los ítems */
+    justify-content: center; 
     gap: 30px; 
     text-align: center; 
 }
