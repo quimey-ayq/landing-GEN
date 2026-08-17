@@ -111,43 +111,155 @@ header.scrolled {
     color: var(--color-white);
 }
 
-/* --- HERO SECTION (BANNER PRINCIPAL) --- */
-.hero {
-    background-image: linear-gradient(rgba(3, 61, 87, 0.7), rgba(3, 61, 87, 0.9)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200');
-    background-size: cover;
-    background-position: center;
-    color: var(--color-white);
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Cambiado de space-between a center */
-    align-items: center;
-    padding-top: 60px;
+/* --- HERO SECTION: CARRUSEL DE CONTENIDO ESTILO INDUSTRIAL --- */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    background-color: var(--color-dark);
 }
 
-.hero-content {
-    max-width: 800px;
-    margin: auto; /* Centrado vertical y horizontal flex */
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+/* Efecto Zoom Lento en el fondo (Ken Burns) */
+.slide-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transform: scale(1.1);
+    transition: transform 6s ease-out; 
+}
+
+.slide.active .slide-bg {
+    transform: scale(1);
+}
+
+/* Animación del texto entrando desde abajo */
+.slide-content {
+    color: var(--color-white);
+    padding-top: 50px; 
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out 0.4s; /* Tiene un pequeño retraso para entrar después del fondo */
+}
+
+.slide.active .slide-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-content h2 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    line-height: 1.2; 
+    margin-bottom: 20px; 
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+}
+
+.slide-content p { 
+    font-size: 1.2rem; 
+    margin-bottom: 35px; 
+    font-weight: 500; 
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5); 
+}
+
+/* --- CONTROLES: FLECHAS --- */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 55px; height: 55px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.slider-arrow:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev { left: 40px; }
+.next { right: 40px; }
+
+/* --- CONTROLES: PUNTOS INDICADORES --- */
+.slider-dots {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: var(--color-secondary);
+    transform: scale(1.4);
+}
+
+/* Contenedor para que el aviso de urgencia quede fijo y centrado abajo */
+.urgency-badge-wrapper {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     padding: 0 20px;
 }
 
-.hero-tagline {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-    display: inline-block;
-    padding: 6px 16px;
-    font-weight: 800;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+/* Responsive para pantallas chicas */
+@media (max-width: 768px) {
+    .slide-content h2 { font-size: 2.2rem; }
+    .slider-arrow { display: none; } /* Oculta flechas en celulares para no tapar */
+    .slider-dots { bottom: 100px; }
 }
-
-.hero h2 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
-.hero p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.9; font-weight: 500; }
-.hero-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 
 /* --- AVISO DE URGENCIA EMBELLECIDO (Glassmorphism) --- */
 .urgency-badge {
@@ -234,7 +346,7 @@ header.scrolled {
 /* CONTENEDOR E IMÁGENES DE SERVICIOS (Con efecto Zoom) */
 .service-img-container {
     width: 100%;
-    height: 180px;
+    height: 350px;
     margin-bottom: 20px;
     border-radius: 6px;
     overflow: hidden; /* Contiene el zoom */
@@ -357,4 +469,70 @@ footer { background-color: #0f172a; color: #94a3b8; padding: 60px 0 20px 0; font
     .hero p { font-size: 1rem; }
     header.scrolled, header { background-color: var(--color-primary); }
     .feature-item { max-width: 100%; } /* Ocupa el ancho en móviles */
+}
+
+/* --- SECCIÓN FORMULARIO DE CONTACTO --- */
+/* Fija el ancho del textarea pero permite estirarlo hacia abajo */
+.form-group textarea {
+    resize: vertical;
+}
+
+.contacto-section {
+    padding: 80px 0;
+    background-color: var(--color-white);
+}
+
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--color-light);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--color-secondary);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(255, 125, 45, 0.2);
+}
+
+.btn-submit {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
