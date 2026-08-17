@@ -89,5 +89,37 @@ function resetIntervalTimer() {
     startIntervalTimer();
 }
 
+// 5. Lógica del Visor de Galería (Lightbox)
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+// Función para abrir la imagen
+function openLightbox(element) {
+    const imgSrc = element.querySelector('img').src; // Obtiene la ruta de la imagen clickeada
+    lightboxImg.src = imgSrc; // Se la asigna a la imagen grande
+    lightbox.style.display = 'block'; // Muestra la pantalla negra
+    document.body.style.overflow = 'hidden'; // Evita que la página haga scroll por detrás
+}
+
+// Función para cerrar la imagen
+function closeLightbox() {
+    lightbox.style.display = 'none'; // Oculta la pantalla negra
+    document.body.style.overflow = 'auto'; // Restaura el scroll de la página
+}
+
+// Permitir cerrar el lightbox si el usuario hace clic en el fondo negro
+window.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Permitir cerrar el lightbox presionando la tecla "Escape"
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && lightbox.style.display === 'block') {
+        closeLightbox();
+    }
+});
+
 // Inicia el carrusel al cargar la página
 startIntervalTimer();
