@@ -27,30 +27,72 @@
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#contacto-form">Contacto</a></li>
                     <li><a href="https://wa.me/5493875810331" class="btn-whatsapp-nav" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="container hero-content fade-up">
-            <span class="hero-tagline">Tu equipo parado es producción perdida</span>
-            <h2>SOLUCIONES ELÉCTRICAS</h2>
-            <p>Tableros Eléctricos Profesionales para todo tipo de proyectos</p>
+    <section id="inicio" class="hero-slider">
+        <div class="slider-container">
             
-            <div class="hero-actions">
-                <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
-                <a href="https://wa.me/5493875810331" class="btn btn-outline" target="_blank">Consultar por WhatsApp</a>
+            <div class="slide active">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(3, 61, 87, 0.7), rgba(3, 61, 87, 0.85)), url('./images/portada1.jpg');"></div>
+                <div class="container slide-content">
+                    <span class="hero-tagline">Tu equipo parado es producción perdida</span>
+                    <h2>TABLEROS ELÉCTRICOS</h2>
+                    <p>Diseño y armado profesional para todo tipo de proyectos</p>
+                    <div class="hero-actions">
+                        <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
+                        <a href="https://wa.me/5493875810331" class="btn btn-outline" target="_blank">Consultar por WhatsApp</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="urgency-badge fade-up">
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(3, 61, 87, 0.7), rgba(3, 61, 87, 0.85)), url('./images/portada2.jpg');"></div>
+                <div class="container slide-content">
+                    <span class="hero-tagline">Protección y Eficiencia</span>
+                    <h2>DISTRIBUCIÓN DE ENERGÍA</h2>
+                    <p>Sistemas robustos y confiables para tu industria o comercio</p>
+                    <div class="hero-actions">
+                        <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(3, 61, 87, 0.7), rgba(3, 61, 87, 0.85)), url('https://isurdgas.com.pe/wp-content/uploads/2022/03/tablero-2.jpg');"></div>
+                <div class="container slide-content">
+                    <span class="hero-tagline">Control Total</span>
+                    <h2>AUTOMATIZACIÓN INDUSTRIAL</h2>
+                    <p>Precisión y ahorro energético con sistemas PLC y VFD</p>
+                    <div class="hero-actions">
+                        <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="slider-arrow prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-arrow next"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+        <div class="urgency-badge-wrapper">
+            <div class="urgency-badge">
                 <p><i class="fa-solid fa-triangle-exclamation"></i> ¿Máquina parada? Priorizamos urgencias industriales con respuesta inmediata.</p>
             </div>
         </div>
     </section>
-<section id="servicios" class="services">
+    
+    <section id="servicios" class="services">
         <div class="container">
             <div class="section-title fade-up">
                 <h2>Nuestros Servicios</h2>
@@ -60,9 +102,9 @@
             <div class="services-grid">
                 <div class="service-card fade-up">
                     <div class="service-img-container">
-                        <img src="https://img.gerencia.cl/wp-content/uploads/2023/12/21082253/variadores-de-frecuencia.jpg" alt="Variadores de Frecuencia" class="service-image">
+                        <img src="./images/fotos/img19.jpeg" alt="Variadores de Frecuencia" class="service-image">
                     </div>
-                    <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
                     <h3>VARIADORES DE FRECUENCIA (VFD)</h3>
                     <ul>
                         <li>Control de velocidad y ahorro energético.</li>
@@ -78,9 +120,9 @@
 
                 <div class="service-card fade-up">
                     <div class="service-img-container">
-                        <img src="https://electrical-engineering-portal.com/academy/wp-content/uploads/2021/08/motor-soft-starters-starting-methods-applications-course.jpg" alt="Arrancadores Suaves" class="service-image">
+                        <img src="./images/fotos/img20.jpeg" alt="Arrancadores Suaves" class="service-image">
                     </div>
-                    <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <div class="service-icon"><i class="fa-regular fa-lightbulb"></i></div>
                     <h3>ARRANCADORES SUAVES (SOFT STARTERS)</h3>
                     <ul>
                         <li>Elimina los golpes de ariete en tuberías (ideal para bombas).</li>
@@ -96,7 +138,7 @@
 
                 <div class="service-card fade-up">
                     <div class="service-img-container">
-                        <img src="https://grupoors.com.mx/wp-content/uploads/2025/02/Plcs-articulko.png" alt="Automatización con PLC" class="service-image">
+                        <img src="./images/fotos/img5.jpeg" alt="Automatización con PLC" class="service-image">
                     </div>
                     <div class="service-icon"><i class="fa-solid fa-tractor"></i></div>
                     <h3>AUTOMATIZACIÓN CON PLC</h3>
@@ -110,7 +152,7 @@
 
                 <div class="service-card fade-up">
                     <div class="service-img-container">
-                        <img src="https://siocorp.pe/wp-content/uploads/2023/12/t-de-fuerza.png" alt="Distribuciones Eléctricas" class="service-image">
+                        <img src="./images/fotos/img18.jpeg" alt="Distribuciones Eléctricas" class="service-image">
                     </div>
                     <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3>DISTRIBUCIONES ELÉCTRICAS</h3>
@@ -125,7 +167,7 @@
 
                 <div class="service-card fade-up">
                     <div class="service-img-container">
-                        <img src="https://isurdgas.com.pe/wp-content/uploads/2022/03/tablero-2.jpg" alt="Transferencia Automatica y Manual" class="service-image">
+                        <img src="./images/fotos/img6.jpeg" alt="Transferencia Automatica y Manual" class="service-image">
                     </div>
                     <div class="service-icon"><i class="fa-solid fa-fire-burner"></i></div>
                     <h3>TRANSFERENCIAS AUTOMÁTICA Y MANUAL</h3>
@@ -138,9 +180,9 @@
 
                 <div class="service-card fade-up">
                     <div class="service-img-container">
-                        <img src="https://t4.ftcdn.net/jpg/06/56/23/79/360_F_656237902_6MmEZegHi0GWfUwDZ5Xnt4f4f9RlfFoH.jpg" alt="Tableros Personalizados" class="service-image">
+                        <img src="./images/fotos/img13.jpeg" alt="Tableros Personalizados" class="service-image">
                     </div>
-                    <div class="service-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-gear"></i></div>
                     <h3>TABLEROS 100% PERSONALIZADOS</h3>
                     <p>Diseñamos según su diagrama, necesidades de espacio, protecciones especiales o condiciones ambientales (polvo, humedad, temperatura).</p>
                     <a href="https://wa.me/5493875810331?text=Hola%20GEN,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20TABLEROS%20PERSONALIZADOS" target="_blank" class="service-link">Consultar <i class="fa-solid fa-arrow-right"></i></a>
@@ -185,6 +227,42 @@
         </div>
     </section>
 
+    <section id="contacto-form" class="contacto-section fade-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Envíanos tu consulta</h2>
+                <p>Completa el formulario y nuestro equipo técnico te responderá a la brevedad.</p>
+            </div>
+            
+            <div class="form-container">
+                <form action="https://formspree.io/f/meewdlnd" method="POST" class="contact-form">
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre o Empresa</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez - Industrias Metalúrgicas">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required placeholder="ejemplo@empresa.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono (Opcional)</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 387 123 4567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Consulta o detalle del proyecto</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Detalla aquí tu necesidad, tipo de tablero o urgencia..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-submit">Enviar Consulta <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container footer-grid">
             <div class="footer-col">
@@ -197,6 +275,7 @@
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto-form">Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-col" id="contacto">
